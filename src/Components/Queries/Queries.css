@@ -1,0 +1,24 @@
+.queries{
+    color: white;
+}
+.query-card-bg{
+    background-color:whitesmoke;
+}
+.query-title{
+    font-size: 16px;
+    margin-top: 8px;
+    color:#1271d6;
+    font-weight: bold;
+    font-family: 'Marcellus', serif;
+}
+.query-content{
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.assigned-query-title{
+    color:#1271d6;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-family: 'Marcellus', serif;
+}

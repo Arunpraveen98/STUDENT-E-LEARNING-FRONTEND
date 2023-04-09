@@ -1,13 +1,35 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+html,
+body,
+#root,
+.app,
+.content{
+  width: 100%;
+  height: auto;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.app{
+  display: flex;
+  position: relative;
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track{
+  background: #e0e0e0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Handle */
+::-webkit-scrollbar-thumb{
+  background: #888;
+}
+
+/* Handle on Hovor */
+::-webkit-scrollbar-track:hover{
+  background: #555;
 }

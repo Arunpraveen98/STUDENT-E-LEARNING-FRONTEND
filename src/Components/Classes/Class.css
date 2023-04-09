@@ -1,0 +1,111 @@
+.component-title {
+  color: black;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 35px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  padding-left: 5px;
+  font-family: "Righteous", cursive;
+}
+
+.card {
+  border: none;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: #1271d6;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: "Marcellus", serif;
+  letter-spacing: 1px;
+}
+
+.join-class {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+.join-btn:hover {
+background-color: rgb(15, 152, 15) !important;
+}
+.content-date {
+  font-weight: bold;
+}
+.pre-read-content {
+  font-weight: bold;
+}
+.task-activity-topic {
+  font-weight: bold;
+}
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+/* .join-btn{
+    <div className="row">
+  <div className="col-md-11">
+
+  </div>
+  <div className="col-md-1">
+
+</div>
+  } */
+.session-arrow-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.day-10-btn{
+  padding: 8px;
+}
+.session-button {
+  margin: 5px;
+ 
+  border-radius: 5px !important;
+}
+.session-button:hover {
+  background-color: rgba(0, 0, 0, 0.473) !important;
+  border-color: white !important;
+}
+/* .session-button:active {
+  color: yellow !important;
+} */
+/* .roadmap-div{
+
+
+} */
+.task-div {
+  margin-top: 5px !important;
+}
+/* .arrow-btn{
+
+
+  border: 2px solid black !important;
+} */

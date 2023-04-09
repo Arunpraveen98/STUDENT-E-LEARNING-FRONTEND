@@ -1,0 +1,114 @@
+.task-header {
+  position: relative;
+  padding: 10px;
+  font-weight: bold;
+}
+.task-topic {
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-family: "Marcellus", serif;
+  letter-spacing: 2px;
+}
+.task-topic-heading {
+  font-weight: lighter;
+  letter-spacing: 1px;
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 5px;
+}
+.task-date {
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.card-url a {
+  text-decoration: none;
+}
+.card-url {
+  font-size: 16px;
+}
+.github-url {
+  font-weight: bold;
+  font-family: monospace;
+  margin-right: 5px;
+}
+.deploy-url {
+  font-weight: bold;
+  font-family: monospace;
+  margin-right: 5px;
+}
+.task-url {
+  border: 1px solid orange;
+  border-radius: 5px;
+  padding: 10px;
+}
+.task-answers {
+  position: relative;
+}
+.task-graded {
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.warning {
+  color: black;
+}
+.task-warning {
+  color: orangered;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.btn-groups {
+  padding: 5px;
+  margin-top: 5px;
+}
+.view-btn {
+  background-color: #4396f5;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.close-btn {
+  background-color: rgb(244, 66, 46);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.task-btn {
+  border: none;
+  padding: 4px 8px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  width: 80px;
+  margin-right: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg);
+}
+
+.task-btn-content {
+  display: inline-block;
+  transform: skew(21deg);
+}
+
+.task-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  background: rgb(20, 20, 20);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.task-btn:hover {
+  color: #fff;
+}
+
+.task-btn:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
