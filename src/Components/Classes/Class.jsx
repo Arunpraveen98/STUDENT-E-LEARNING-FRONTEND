@@ -34,7 +34,7 @@ const Class = () => {
     try {
       // console.log(token);
       const Class_Contents = await axios.get(
-        "http://localhost:8000/Class-Contents",
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Class-Contents`,
         {
           headers: {
             Authorization: Student_Data.Student_Token,
@@ -111,7 +111,7 @@ const Class = () => {
       });
       setSpinner(false);
       const Post_Task = await axios.post(
-        "http://localhost:8000/Task-Submission",
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Task-Submission`,
         {
           Current_Date: ISTDateString,
           Task_Name: Task_Name,

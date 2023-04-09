@@ -20,7 +20,8 @@ const Free_Courses = () => {
   async function Get_Course_Content() {
     try {
       const Free_Course_Content = await axios.get(
-        "http://localhost:8000/Free-Courses",
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Free-Courses`,
+
         {
           headers: {
             Authorization: Student_Data.Student_Token,
@@ -69,7 +70,6 @@ const Free_Courses = () => {
               <iframe
                 width="100%"
                 height="100%"
-                
                 src={Course_video}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

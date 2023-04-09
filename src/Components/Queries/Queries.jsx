@@ -55,7 +55,8 @@ const Queries = () => {
           second: "2-digit",
         });
         const Post_Query = await axios.post(
-          "http://localhost:8000/Create-Query",
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Create-Query`,
+
           {
             ...values,
             Current_Date: ISTDateString,
@@ -79,7 +80,8 @@ const Queries = () => {
   async function Get_Query() {
     try {
       const Get_Assigned_Query = await axios.get(
-        `http://localhost:8000/Assigned-Query?Email=${Student_Data.Student_Email}`,
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Assigned-Query?Email=${Student_Data.Student_Email}`,
+
         {
           headers: {
             Authorization: Student_Data.Student_Token,

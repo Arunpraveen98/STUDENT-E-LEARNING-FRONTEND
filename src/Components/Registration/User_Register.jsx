@@ -56,7 +56,8 @@ const User_Register = () => {
       try {
         setSpinner(false);
         const Post_Student_Registration = await axios.post(
-          "http://localhost:8000/Student-Registration",
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Student-Registration`,
+
           values
         );
         if (values.Email === Post_Student_Registration.data.Email) {
