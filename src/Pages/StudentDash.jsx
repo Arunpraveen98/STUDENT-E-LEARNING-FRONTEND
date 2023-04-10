@@ -10,7 +10,7 @@ const StudentDash = () => {
       <Sidebar />
       <main className="content">
         <Topbar />
-        <Tasks_Dashboard/>
+        <Tasks_Dashboard />
       </main>
     </div>
   );

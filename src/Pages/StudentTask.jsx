@@ -9,7 +9,7 @@ const StudentTask = () => {
       <Sidebar />
       <main className="content">
         <Topbar />
-        <Task_Submission/>
+        <Task_Submission />
       </main>
     </div>
   );

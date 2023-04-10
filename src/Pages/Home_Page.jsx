@@ -1,17 +1,18 @@
 import React from "react";
 import Sidebar from "../Components/Bars/Sidebar";
 import Topbar from "../Components/Bars/Topbar";
-import Queries from "../Components/Queries/Queries";
-const Student_Queries = () => {
+import Home from "../Components/Home/Home";
+const Home_Page = () => {
   return (
     <div className="app">
+   
       <Sidebar />
       <main className="content">
         <Topbar />
-        <Queries />
+        <Home />
       </main>
     </div>
   );
 };
 
-export default Student_Queries;
+export default Home_Page;

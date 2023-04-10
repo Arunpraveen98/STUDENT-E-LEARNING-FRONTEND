@@ -57,6 +57,8 @@ const User_Register = () => {
         setSpinner(false);
         const Post_Student_Registration = await axios.post(
           `${process.env.REACT_APP_EXPRESS_SERVER}/Student-Registration`,
+          // `http://localhost:8000/Student-Registration`,
+          
 
           values
         );
@@ -77,157 +79,161 @@ const User_Register = () => {
     },
   });
   return (
-    <div className="container register-container">
-      <div className="row">
-        <div className="col-md-12 register-form">
-          <form className="form" onSubmit={My_Formik.handleSubmit}>
-            <p className="title">Register </p>
-            <p className="message">
-              Signup now and get full access to our app.{" "}
-            </p>
-            <div className="flex">
-              {/* ---------------- */}
-              <div>
-                <label>
-                  <input
-                    name="FirstName"
-                    value={My_Formik.values.FirstName}
-                    onChange={My_Formik.handleChange}
-                    required
-                    type="text"
-                    className="input"
-                  />
-                  <span>Firstname</span>
-                </label>
-                {
-                  <span
-                    style={{
-                      color: "red",
-                      fontSize: "10px",
-                      fontFamily: "cursive",
-                    }}
-                  >
-                    {My_Formik.errors.FirstName}
-                  </span>
-                }
-              </div>
-              {/* ---------------- */}
-              <div>
-                <label>
-                  <input
-                    name="LastName"
-                    value={My_Formik.values.LastName}
-                    onChange={My_Formik.handleChange}
-                    required
-                    type="text"
-                    className="input"
-                  />
-                  <span>Lastname</span>
-                </label>
-                {
-                  <span
-                    style={{
-                      color: "red",
-                      fontSize: "10px",
-                      fontFamily: "cursive",
-                    }}
-                  >
-                    {My_Formik.errors.LastName}
-                  </span>
-                }
-              </div>
-            </div>
-            {/* ---------------- */}
-            <label>
-              <input
-                name="Email"
-                value={My_Formik.values.Email}
-                onChange={My_Formik.handleChange}
-                required
-                type="email"
-                className="input"
-              />
-              <span>Email</span>
-            </label>
-            {
-              <span
-                style={{
-                  color: "red",
-                  fontSize: "10px",
-                  fontFamily: "cursive",
-                }}
-              >
-                {Email_Exists ? "Email already exists" : My_Formik.errors.Email}
-              </span>
-            }
-            {/* ---------------- */}
-            <label>
-              <input
-                name="Password"
-                value={My_Formik.values.Password}
-                onChange={My_Formik.handleChange}
-                required
-                type="password"
-                className="input"
-              />
-
-              <span>Password</span>
-              {/* <div className="input-group-append">
-          <span className="input-group-text" onClick={PasswordVisibility}>
-            {showPassword ? <Visibility /> : <VisibilityOff />}
-          </span>
-        </div> */}
-            </label>
-            {
-              <span
-                style={{
-                  color: "red",
-                  fontSize: "10px",
-                  fontFamily: "cursive",
-                }}
-              >
-                {My_Formik.errors.Password}
-              </span>
-            }
-            {/* ---------------- */}
-            <label>
-              <input
-                name="ConfirmPassword"
-                value={My_Formik.values.ConfirmPassword}
-                onChange={My_Formik.handleChange}
-                required
-                type="password"
-                className="input"
-              />
-              <span>Confirm password</span>
-            </label>
-            {
-              <span
-                style={{
-                  color: "red",
-                  fontSize: "10px",
-                  fontFamily: "cursive",
-                }}
-              >
-                {My_Formik.errors.ConfirmPassword}
-              </span>
-            }
-            {/* ---------------- */}
-            <button className="submit" type="submit" value="SUBMIT">
-              {Spinner ? (
-                "Register"
-              ) : (
-                <div className="spinner-div">
-                  <div className="spinner"></div>
+    <div className="register-page-bg">
+      <div className="container register-container">
+        <div className="row">
+          <div className="col-md-12 register-form">
+            <form className="form" onSubmit={My_Formik.handleSubmit}>
+              <p className="title">Register </p>
+              <p className="message">
+                Signup now and get full access to our app.{" "}
+              </p>
+              <div className="flex">
+                {/* ---------------- */}
+                <div>
+                  <label>
+                    <input
+                      name="FirstName"
+                      value={My_Formik.values.FirstName}
+                      onChange={My_Formik.handleChange}
+                      required
+                      type="text"
+                      className="input"
+                    />
+                    <span>Firstname</span>
+                  </label>
+                  {
+                    <span
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                        fontFamily: "Philosopher, sans-serif",
+                        letterSpacing: "1px",
+                      }}
+                    >
+                      {My_Formik.errors.FirstName}
+                    </span>
+                  }
                 </div>
-              )}
-            </button>
-            {/* ---------------- */}
-            <p className="signin">
-              Already have an acount ? <Link to={"/"}>Signin</Link>{" "}
-            </p>
-            {/* ---------------- */}
-          </form>
+                {/* ---------------- */}
+                <div>
+                  <label>
+                    <input
+                      name="LastName"
+                      value={My_Formik.values.LastName}
+                      onChange={My_Formik.handleChange}
+                      required
+                      type="text"
+                      className="input"
+                    />
+                    <span>Lastname</span>
+                  </label>
+                  {
+                    <span
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                        fontFamily: "Philosopher, sans-serif",
+                        letterSpacing: "1px",
+                      }}
+                    >
+                      {My_Formik.errors.LastName}
+                    </span>
+                  }
+                </div>
+              </div>
+              {/* ---------------- */}
+              <label>
+                <input
+                  name="Email"
+                  value={My_Formik.values.Email}
+                  onChange={My_Formik.handleChange}
+                  required
+                  type="email"
+                  className="input"
+                />
+                <span>Email</span>
+              </label>
+              {
+                <span
+                  style={{
+                    color: "red",
+                    fontSize: "10px",
+                    fontFamily: "Philosopher, sans-serif",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  {Email_Exists
+                    ? "Email already exists"
+                    : My_Formik.errors.Email}
+                </span>
+              }
+              {/* ---------------- */}
+              <label>
+                <input
+                  name="Password"
+                  value={My_Formik.values.Password}
+                  onChange={My_Formik.handleChange}
+                  required
+                  type="password"
+                  className="input"
+                />
+
+                <span>Password</span>
+              </label>
+              {
+                <span
+                  style={{
+                    color: "red",
+                    fontSize: "10px",
+                    fontFamily: "Philosopher, sans-serif",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  {My_Formik.errors.Password}
+                </span>
+              }
+              {/* ---------------- */}
+              <label>
+                <input
+                  name="ConfirmPassword"
+                  value={My_Formik.values.ConfirmPassword}
+                  onChange={My_Formik.handleChange}
+                  required
+                  type="password"
+                  className="input"
+                />
+                <span>Confirm password</span>
+              </label>
+              {
+                <span
+                  style={{
+                    color: "red",
+                    fontSize: "10px",
+                    fontFamily: "Philosopher, sans-serif",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  {My_Formik.errors.ConfirmPassword}
+                </span>
+              }
+              {/* ---------------- */}
+              <button className="submit" type="submit" value="SUBMIT">
+                {Spinner ? (
+                  "Register"
+                ) : (
+                  <div className="spinner-div">
+                    <div className="spinner"></div>
+                  </div>
+                )}
+              </button>
+              {/* ---------------- */}
+              <p className="signin">
+                Already have an acount ? <Link to={"/"}>Signin</Link>{" "}
+              </p>
+              {/* ---------------- */}
+            </form>
+          </div>
         </div>
       </div>
     </div>

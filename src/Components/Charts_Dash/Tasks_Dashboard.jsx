@@ -1,12 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import DashEarnings from "./Dash_Card";
-// import TaskCompletionBarChart from "./Dash_Chart";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import {
-  Assignment,
   AssignmentLate,
-  BookOnline,
   FeaturedVideo,
 } from "@mui/icons-material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -24,6 +20,7 @@ const Tasks_Dashboard = () => {
     try {
       const Get_Task_Data = await axios.get(
         `${process.env.REACT_APP_EXPRESS_SERVER}/Submitted-Task?Email=${Student_Data.Student_Email}`,
+        // `http://localhost:8000/Submitted-Task?Email=${Student_Data.Student_Email}`,
 
         {
           headers: {

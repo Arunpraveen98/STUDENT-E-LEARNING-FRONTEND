@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import {
   BarChart,
   Bar,
@@ -11,18 +10,23 @@ import {
 } from "recharts";
 
 const TaskCompletionBarChart = ({ Task_Completed }) => {
-  console.log(Task_Completed);
-  const [Completed,setCompletd] = useState(false);
-  // Fictional dataset for bar chart
+  // console.log(Task_Completed);
+
   const data = [
     { day: "Day-1", completed: { Task_Completed } ? "true" : "false" },
     { day: "Day-2", completed: { Task_Completed } ? "true" : "false" },
     { day: "Day-3", completed: { Task_Completed } ? "true" : "false" },
     { day: "Day-4", completed: { Task_Completed } ? "true" : "false" },
+    { day: "Day-5", completed: { Task_Completed } ? "true" : "false" },
+    { day: "Day-6", completed: { Task_Completed } ? "true" : "false" },
+    { day: "Day-7", completed: { Task_Completed } ? "true" : "false" },
+    { day: "Day-8", completed: { Task_Completed } ? "true" : "false" },
+    { day: "Day-9", completed: { Task_Completed } ? "true" : "false" },
+    { day: "Day-10", completed: { Task_Completed } ? "true" : "false" },
   ];
 
   return (
-    <div className="col-md-12">
+    <div className="col-md-12 mt-5">
       <BarChart width={800} height={400} data={data}>
         <CartesianGrid />
         <XAxis dataKey="day" type="category" />

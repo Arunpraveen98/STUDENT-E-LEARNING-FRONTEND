@@ -11,6 +11,7 @@ import EastIcon from "@mui/icons-material/East";
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 const Class = () => {
   // --------------------------------------
   //? React Hooks...
@@ -32,9 +33,9 @@ const Class = () => {
   //? Function to fetch the class contents Data...
   async function Get_Class_Contents() {
     try {
-      // console.log(token);
       const Class_Contents = await axios.get(
         `${process.env.REACT_APP_EXPRESS_SERVER}/Class-Contents`,
+        // "http://localhost:8000/Class-Contents",
         {
           headers: {
             Authorization: Student_Data.Student_Token,
@@ -60,12 +61,7 @@ const Class = () => {
   //? Daily Content Function ...
   const set_daily_content = async (index) => {
     try {
-      if (
-        // ClassContents !== [] &&
-        // ClassContents !== null &&
-        // ClassContents !== undefined
-        ClassContents.length !== 0
-      ) {
+      if (ClassContents.length !== 0) {
         const DailyContent = ClassContents.slice(index, index + 1);
         setDaily_Content(DailyContent);
         setInitialContent(false);
@@ -79,23 +75,6 @@ const Class = () => {
     }
   };
   // --------------------------------------
-  // const Get_Date_and_Time = async () => {
-  //   try {
-  //     const currentDate = new Date();
-  //     const ISTDateString = currentDate.toLocaleString("en-IN", {
-  //       timeZone: "Asia/Kolkata",
-  //       day: "2-digit",
-  //       month: "2-digit",
-  //       year: "numeric",
-  //       hour: "2-digit",
-  //       minute: "2-digit",
-  //       second: "2-digit",
-  //     });
-  //     console.log(ISTDateString);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const Post_Task_Activites = async (Task_Name, Task_Topic) => {
     try {
@@ -112,6 +91,7 @@ const Class = () => {
       setSpinner(false);
       const Post_Task = await axios.post(
         `${process.env.REACT_APP_EXPRESS_SERVER}/Task-Submission`,
+        // "http://localhost:8000/Task-Submission",
         {
           Current_Date: ISTDateString,
           Task_Name: Task_Name,
@@ -438,29 +418,64 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
-                <Button className="session-button">Day-4</Button>
+                <Button
+                  className="session-button"
+                  onClick={() => set_daily_content(3)}
+                >
+                  Day-4
+                </Button>
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
-                <Button className="session-button">Day-5</Button>
+                <Button
+                  className="session-button"
+                  onClick={() => set_daily_content(4)}
+                >
+                  Day-5
+                </Button>
 
-                <Button className="session-button">Day-6</Button>
+                <Button
+                  className="session-button"
+                  onClick={() => set_daily_content(5)}
+                >
+                  Day-6
+                </Button>
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
-                <Button className="session-button">Day-7</Button>
+                <Button
+                  className="session-button"
+                  onClick={() => set_daily_content(6)}
+                >
+                  Day-7
+                </Button>
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
-                <Button className="session-button">Day-8</Button>
+                <Button
+                  className="session-button"
+                  onClick={() => set_daily_content(7)}
+                >
+                  Day-8
+                </Button>
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
-                <Button className="session-button">Day-9</Button>
+                <Button
+                  className="session-button"
+                  onClick={() => set_daily_content(8)}
+                >
+                  Day-9
+                </Button>
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
-                <Button className="session-button day-10-btn">Day-10</Button>
+                <Button
+                  className="session-button day-10-btn"
+                  onClick={() => set_daily_content(9)}
+                >
+                  Day-10
+                </Button>
               </div>
             </div>
           </div>
@@ -477,15 +492,25 @@ const Class = () => {
         <Modal.Header closeButton>
           <Modal.Title>Join Zoom Meeting</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Insert your Zoom link here.</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleCloseModal}>
-            Join
-          </Button>
-        </Modal.Footer>
+        {Daily_Content.map((zoom) => {
+          return (
+            <>
+              <Modal.Body className="zoom-link" key={zoom.id}>
+                <a href={zoom.Zoom_Link}>{zoom.Zoom_Link}</a>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseModal}>
+                  Close
+                </Button>
+                <Button variant="primary">
+                  <a className="join-btn-link" href={zoom.Zoom_Link}>
+                    Join
+                  </a>
+                </Button>
+              </Modal.Footer>
+            </>
+          );
+        })}
       </Modal>
       {/*END OF Popup Modal */}
 

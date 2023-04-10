@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
-import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { useNavigate } from "react-router-dom";
-import {
-  AccountBoxOutlined,
-  AccountCircle,
-  VerifiedUserOutlined,
-} from "@mui/icons-material";
+import { AccountCircle } from "@mui/icons-material";
 
 const Topbar = () => {
   const theme = useTheme();
@@ -41,12 +35,7 @@ const Topbar = () => {
         display="flex"
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
-      >
-        {/* <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
-        <IconButton type="button" sx={{ p: 1 }}>
-          <SearchOutlinedIcon />
-        </IconButton> */}
-      </Box>
+      ></Box>
 
       <Box display="flex">
         <Typography variant="h6" marginTop={"6px"} color={"white"}>

@@ -11,17 +11,34 @@ import StudentTask from "./Pages/StudentTask";
 import StudentDash from "./Pages/StudentDash";
 import StudentCourse from "./Pages/StudentCourse";
 import Student_Queries from "./Pages/Student_Queries";
+import Home_Page from "./Pages/Home_Page";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [theme, colorMode] = useMode();
   return (
-    <ColorModeContext.Provider value={colorMode}>
+    <>
+     <ToastContainer
+        position="top-center"
+        autoClose={false}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
           <Route path="/" element={<User_Login />} />
           <Route path="/Student-Registration" element={<User_Register />} />
-          <Route path="/Student-Dashboard" element={<StudentDash />} />
+
+          <Route path="/HomePage" element={<Home_Page />} />
           <Route path="/class" element={<StudentClass />} />
           <Route path="/Task-Submission" element={<StudentTask />} />
           <Route path="/Tasks-Overview" element={<StudentDash />} />
@@ -30,6 +47,8 @@ function App() {
         </Routes>
       </ThemeProvider>
     </ColorModeContext.Provider>
+    </>
+   
   );
 }
 

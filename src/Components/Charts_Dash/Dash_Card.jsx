@@ -9,7 +9,7 @@ const Dash_Card = ({
 }) => {
   return (
     <>
-      {/*Earnings (Monthly) Card Example*/}
+      {/*Features Available Card*/}
       <div className="col-md-3 mb-4">
         <div className={`card border-left-${CardLeftColor} shadow h-100 py-2`}>
           <div className="card-body">

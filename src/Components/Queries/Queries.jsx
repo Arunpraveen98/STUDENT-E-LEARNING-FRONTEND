@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Queries.css";
 import { useFormik } from "formik";
 import axios from "axios";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { Key } from "@mui/icons-material";
 const Queries = () => {
   const [InitialContent, setInitialContent] = useState(true);
+  const [Spinner, setSpinner] = useState(true);
   const [Loader, setLoader] = useState(true);
   const [AssignedQuery, setAssignedQuery] = useState([]);
   const Student = window.localStorage.getItem("Student_Data");
@@ -44,6 +42,7 @@ const Queries = () => {
     },
     onSubmit: async (values) => {
       try {
+        setSpinner(false);
         const currentDate = new Date();
         const ISTDateString = currentDate.toLocaleString("en-IN", {
           timeZone: "Asia/Kolkata",
@@ -56,6 +55,7 @@ const Queries = () => {
         });
         const Post_Query = await axios.post(
           `${process.env.REACT_APP_EXPRESS_SERVER}/Create-Query`,
+          // `http://localhost:8000/Create-Query`,
 
           {
             ...values,
@@ -71,6 +71,8 @@ const Queries = () => {
         console.log(Post_Query);
         alert("Query Created Success");
         My_Formik.resetForm();
+        setSpinner(true);
+        Get_Query();
       } catch (error) {
         console.log(error);
       }
@@ -81,6 +83,7 @@ const Queries = () => {
     try {
       const Get_Assigned_Query = await axios.get(
         `${process.env.REACT_APP_EXPRESS_SERVER}/Assigned-Query?Email=${Student_Data.Student_Email}`,
+        // `http://localhost:8000/Assigned-Query?Email=${Student_Data.Student_Email}`,
 
         {
           headers: {
@@ -124,20 +127,24 @@ const Queries = () => {
                       name="Topic"
                     >
                       <option value="">⏪ -select topic- ⏩</option>
-                      <option value="html">HTML</option>
-                      <option value="css">CSS</option>
-                      <option value="javascript">JavaScript</option>
-                      <option value="react">React.js</option>
-                      <option value="mongodb">MongoDB</option>
-                      <option value="express">Express</option>
-                      <option value="node">Node</option>
+                      <option value="HTML">HTML</option>
+                      <option value="CSS">CSS</option>
+                      <option value="DOM">DOM</option>
+                      <option value="JavaScript">JavaScript</option>
+                      <option value="Bootstrap">Bootstrap</option>
+                      <option value="React">React</option>
+                      <option value="MySql">MySql</option>
+                      <option value="MongoDB">MongoDB</option>
+                      <option value="Express">Express</option>
+                      <option value="Node">Node</option>
                     </select>
                     {
                       <span
                         style={{
                           color: "red",
                           fontSize: "10px",
-                          fontFamily: "cursive",
+                          fontFamily: "Philosopher, sans-serif",
+                          letterSpacing: "1px",
                         }}
                       >
                         {My_Formik.errors.Topic}
@@ -153,15 +160,16 @@ const Queries = () => {
                       name="Language"
                     >
                       <option value="">⏪ -select language- ⏩</option>
-                      <option value="english">English</option>
-                      <option value="tamil">Tamil</option>
+                      <option value="English">English</option>
+                      <option value="Tamil">Tamil</option>
                     </select>
                     {
                       <span
                         style={{
                           color: "red",
                           fontSize: "10px",
-                          fontFamily: "cursive",
+                          fontFamily: "Philosopher, sans-serif",
+                          letterSpacing: "1px",
                         }}
                       >
                         {My_Formik.errors.Language}
@@ -183,7 +191,8 @@ const Queries = () => {
                         style={{
                           color: "red",
                           fontSize: "10px",
-                          fontFamily: "cursive",
+                          fontFamily: "Philosopher, sans-serif",
+                          letterSpacing: "1px",
                         }}
                       >
                         {My_Formik.errors.QueryTitle}
@@ -204,7 +213,8 @@ const Queries = () => {
                         style={{
                           color: "red",
                           fontSize: "10px",
-                          fontFamily: "cursive",
+                          fontFamily: "Philosopher, sans-serif",
+                          letterSpacing: "1px",
                         }}
                       >
                         {My_Formik.errors.QueryDescription}
@@ -228,7 +238,8 @@ const Queries = () => {
                             style={{
                               color: "red",
                               fontSize: "10px",
-                              fontFamily: "cursive",
+                              fontFamily: "Philosopher, sans-serif",
+                              letterSpacing: "1px",
                             }}
                           >
                             {My_Formik.errors.AvailableTimeFrom}
@@ -249,7 +260,8 @@ const Queries = () => {
                             style={{
                               color: "red",
                               fontSize: "10px",
-                              fontFamily: "cursive",
+                              fontFamily: "Philosopher, sans-serif",
+                              letterSpacing: "1px",
                             }}
                           >
                             {My_Formik.errors.AvailableTimeTo}
@@ -261,10 +273,16 @@ const Queries = () => {
                   <div className="col-md-12 d-flex justify-content-center mt-2">
                     <button
                       type="submit"
-                      value={"Create"}
-                      className="btn btn-success"
+                      value={"CREATE"}
+                      className="create-btn view-btn mt-2"
                     >
-                      Create
+                      {Spinner ? (
+                        <span className="create-btn-content">CREATE</span>
+                      ) : (
+                        <div className="spinner-div">
+                          <div className="spinner"></div>
+                        </div>
+                      )}
                     </button>
                   </div>
                 </form>
@@ -305,7 +323,7 @@ const Queries = () => {
                 <div className="col-md-6">
                   {AssignedQuery.map((Query) => {
                     return (
-                      <div className="card" key={Query._id}>
+                      <div className="card mb-2" key={Query._id}>
                         <div className="card-header">
                           <p className="card-text query-title">
                             Topic :

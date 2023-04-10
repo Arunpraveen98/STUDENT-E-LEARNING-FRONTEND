@@ -1,3 +1,12 @@
+.register-page-bg {
+  background-image: url("../../Assets/login-page-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
 .register-container {
   /* border:2px solid rgb(0, 255, 4); */
   padding: 20px;
@@ -7,7 +16,7 @@
   /* border:2px solid yellow; */
   display: flex;
   justify-content: center;
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .form {
@@ -15,7 +24,8 @@
   flex-direction: column;
   gap: 10px;
   max-width: 350px;
-  background-color: #fff;
+
+  background-color: #ffffff8e;
   padding: 20px;
   border-radius: 20px;
   position: relative;
@@ -57,7 +67,7 @@
 
 .message,
 .signin {
-  color: rgba(88, 87, 87, 0.822);
+  color: rgba(0, 0, 0, 0.822);
   font-size: 14px;
 }
 
@@ -66,11 +76,11 @@
 }
 
 .signin a {
-  color: royalblue;
+  color: rgb(10, 53, 184);
 }
 
 .signin a:hover {
-  text-decoration: underline royalblue;
+  text-decoration: underline rgb(28, 81, 242);
 }
 
 .flex {

@@ -25,7 +25,18 @@
   font-family: "Marcellus", serif;
   letter-spacing: 1px;
 }
-
+.zoom-link{
+  font-size: 12.5px;
+  width: 100%;
+}
+.join-btn-link{
+  text-decoration: none;
+  color: white;
+}
+.join-btn-link:hover{
+  
+  color: white;
+}
 .join-class {
   padding-top: 5px;
   padding-left: 5px;
@@ -59,7 +70,7 @@ background-color: rgb(15, 152, 15) !important;
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: #0069d9;
+  background-color: #1f810b;
   border-color: #0062cc;
 }
 

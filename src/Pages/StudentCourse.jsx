@@ -9,7 +9,7 @@ const StudentCourse = () => {
       <Sidebar />
       <main className="content">
         <Topbar />
-        <Free_Courses/>
+        <Free_Courses />
       </main>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import axios from "axios";
 import "./Free_Course.css";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +21,7 @@ const Free_Courses = () => {
     try {
       const Free_Course_Content = await axios.get(
         `${process.env.REACT_APP_EXPRESS_SERVER}/Free-Courses`,
+        // `http://localhost:8000/Free-Courses`,
 
         {
           headers: {
@@ -103,17 +104,10 @@ const Free_Courses = () => {
                 <div className="card-container">
                   {Course_Content.map((item, index) => {
                     return (
-                      // <div className="" key={index}>
                       <div className="course-content-card" key={index}>
                         <div>
                           <img
-                            //   variant="top"
                             className="course-card-img"
-                            //   style={{
-                            //     width: "100%",
-                            //     height: "auto",
-                            //     padding: "5px",
-                            //   }}
                             src={item.Course_Image_Url}
                           />
                         </div>

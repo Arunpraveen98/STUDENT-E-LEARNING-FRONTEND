@@ -17,6 +17,7 @@ const Task_Submission = () => {
     try {
       const Get_Task_Data = await axios.get(
         `${process.env.REACT_APP_EXPRESS_SERVER}/Submitted-Task?Email=${Student_Data.Student_Email}`,
+        // `http://localhost:8000/Submitted-Task?Email=${Student_Data.Student_Email}`,
 
         {
           headers: {
@@ -26,14 +27,10 @@ const Task_Submission = () => {
       );
       console.log(Get_Task_Data.data.length);
       if (Get_Task_Data.data.length === 0) {
-        // alert("Tasks not Submitted");
-        // setInitialContent(true);
         setLoader(false);
       } else {
         setLoader(false);
         setInitialContent(false);
-        // setLoader(true);
-        // setLoader(false);
         setSubmitted_Task(Get_Task_Data.data);
       }
     } catch (error) {

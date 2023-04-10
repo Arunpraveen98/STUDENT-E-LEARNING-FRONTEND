@@ -9,7 +9,7 @@ const StudentClass = () => {
       <Sidebar />
       <main className="content">
         <Topbar />
-        <Class/>
+        <Class />
       </main>
     </div>
   );
