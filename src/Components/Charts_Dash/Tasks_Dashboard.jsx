@@ -28,10 +28,10 @@ const Tasks_Dashboard = () => {
           },
         }
       );
-      console.log(Get_Task_Data.data[0].Task_Completed);
+      // console.log(Get_Task_Data.data[0].Task_Completed);
       setSubmitted_Task(Get_Task_Data.data);
       setTask_value(Get_Task_Data.data[0].Task_Completed);
-      console.log(Get_Task_Data.data[0].Task_Completed);
+      // console.log(Get_Task_Data.data[0].Task_Completed);
     } catch (error) {
       console.log(error);
       navigate("/");

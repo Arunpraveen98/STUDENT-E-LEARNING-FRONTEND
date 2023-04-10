@@ -1,5 +1,4 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";

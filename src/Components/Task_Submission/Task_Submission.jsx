@@ -25,7 +25,7 @@ const Task_Submission = () => {
           },
         }
       );
-      console.log(Get_Task_Data.data.length);
+      // console.log(Get_Task_Data.data.length);
       if (Get_Task_Data.data.length === 0) {
         setLoader(false);
       } else {
@@ -48,7 +48,7 @@ const Task_Submission = () => {
     const Get_Selected_Task = Submitted_Task.filter(
       (item) => item._id === selected_task_id
     );
-    console.log(Get_Selected_Task);
+    // console.log(Get_Selected_Task);
     setSelected_Task(Get_Selected_Task);
     setView_Task(true);
   };

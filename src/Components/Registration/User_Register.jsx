@@ -65,7 +65,7 @@ const User_Register = () => {
         if (values.Email === Post_Student_Registration.data.Email) {
           setEmail_Exists(true);
           setSpinner(true);
-          console.log(Post_Student_Registration.data.Email);
+          // console.log(Post_Student_Registration.data.Email);
         } else {
           alert("successfully Registered...");
           setEmail_Exists(false);

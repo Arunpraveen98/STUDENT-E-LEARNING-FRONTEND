@@ -42,7 +42,7 @@ const Class = () => {
           },
         }
       );
-      console.log(Class_Contents.data.message);
+      // console.log(Class_Contents.data.message);
 
       setClassContents(Class_Contents.data);
       setLoader(false);
@@ -66,8 +66,8 @@ const Class = () => {
         setDaily_Content(DailyContent);
         setInitialContent(false);
         setLoader(false);
-        console.log(DailyContent);
-        console.log(DailyContent[0].id);
+        // console.log(DailyContent);
+        // console.log(DailyContent[0].id);
       }
     } catch (error) {
       console.log(error);
@@ -107,7 +107,7 @@ const Class = () => {
           },
         }
       );
-      console.log(Post_Task);
+      // console.log(Post_Task);
       alert("Task Submitted");
       setGithub_Url("");
       setDeploy_Url("");

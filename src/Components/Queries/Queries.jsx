@@ -68,7 +68,7 @@ const Queries = () => {
             },
           }
         );
-        console.log(Post_Query);
+        // console.log(Post_Query);
         alert("Query Created Success");
         My_Formik.resetForm();
         setSpinner(true);
@@ -99,8 +99,8 @@ const Queries = () => {
         setInitialContent(false);
         setAssignedQuery(Get_Assigned_Query.data);
       }
-      console.log(Get_Assigned_Query.data);
-      console.log(AssignedQuery);
+      // console.log(Get_Assigned_Query.data);
+      // console.log(AssignedQuery);
     } catch (error) {
       console.log(error);
     }

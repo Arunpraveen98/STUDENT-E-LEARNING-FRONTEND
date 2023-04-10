@@ -45,7 +45,7 @@ const Free_Courses = () => {
       );
       setCourse_video(Get_Course_Video_Url[0].Course_Video_Url);
       setShowVideo(true);
-      console.log(Card_id, Get_Course_Video_Url[0].Course_Video_Url);
+      // console.log(Card_id, Get_Course_Video_Url[0].Course_Video_Url);
     } catch (error) {
       console.log(error);
     }
