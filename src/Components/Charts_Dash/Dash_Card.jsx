@@ -1,5 +1,5 @@
 import React from "react";
-
+// ------------------------------
 const Dash_Card = ({
   Title,
   Amount,
@@ -7,6 +7,7 @@ const Dash_Card = ({
   CardTextColor,
   icons,
 }) => {
+  // ------------------------------
   return (
     <>
       {/*Features Available Card*/}
@@ -30,6 +31,7 @@ const Dash_Card = ({
           </div>
         </div>
       </div>
+       {/*END of Features Available Card*/}
     </>
   );
 };

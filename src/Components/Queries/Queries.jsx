@@ -2,13 +2,35 @@ import React, { useEffect, useState } from "react";
 import "./Queries.css";
 import { useFormik } from "formik";
 import axios from "axios";
+import { toast } from "react-toastify";
+// -------------------------
 const Queries = () => {
+  // -------------------------
+  //? React Hooks...
   const [InitialContent, setInitialContent] = useState(true);
   const [Spinner, setSpinner] = useState(true);
   const [Loader, setLoader] = useState(true);
   const [AssignedQuery, setAssignedQuery] = useState([]);
+  // -------------------------
+  //? Student Object...
   const Student = window.localStorage.getItem("Student_Data");
   const Student_Data = JSON.parse(Student);
+  // -------------------------
+  //? React toastify for Success...
+  const success = (message) => {
+    toast.success(`${message}`, {
+      position: "top-center",
+      autoClose: true,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 1,
+      theme: "dark",
+    });
+  };
+  // -------------------------
+  //? Formik for Form Validations...
   const My_Formik = useFormik({
     initialValues: {
       Topic: "",
@@ -33,16 +55,18 @@ const Queries = () => {
         errors.QueryDescription = "Please enter query description";
       }
       if (!values.AvailableTimeFrom) {
-        errors.AvailableTimeFrom = "Please select available time";
+        errors.AvailableTimeFrom = "Please select available time From";
       }
       if (!values.AvailableTimeTo) {
-        errors.AvailableTimeTo = "Please select available time";
+        errors.AvailableTimeTo = "Please select available time To";
       }
       return errors;
     },
     onSubmit: async (values) => {
       try {
+        // -------------------------
         setSpinner(false);
+        // -------------------------
         const currentDate = new Date();
         const ISTDateString = currentDate.toLocaleString("en-IN", {
           timeZone: "Asia/Kolkata",
@@ -53,10 +77,11 @@ const Queries = () => {
           minute: "2-digit",
           second: "2-digit",
         });
+        // -------------------------
+        //? POST Queries...
         const Post_Query = await axios.post(
           `${process.env.REACT_APP_EXPRESS_SERVER}/Create-Query`,
           // `http://localhost:8000/Create-Query`,
-
           {
             ...values,
             Current_Date: ISTDateString,
@@ -68,19 +93,24 @@ const Queries = () => {
             },
           }
         );
+        // -------------------------
         // console.log(Post_Query);
-        alert("Query Created Success");
+        // alert("Query Created Success");
+        success("👍Successfully Query Created.");
         My_Formik.resetForm();
         setSpinner(true);
         Get_Query();
+        // -------------------------
       } catch (error) {
         console.log(error);
       }
     },
   });
-
+  // -------------------------
+  //? Async function to fetch the Queries...
   async function Get_Query() {
     try {
+      // -------------------------
       const Get_Assigned_Query = await axios.get(
         `${process.env.REACT_APP_EXPRESS_SERVER}/Assigned-Query?Email=${Student_Data.Student_Email}`,
         // `http://localhost:8000/Assigned-Query?Email=${Student_Data.Student_Email}`,
@@ -91,6 +121,7 @@ const Queries = () => {
           },
         }
       );
+      // -------------------------
       if (Get_Assigned_Query.data.length === 0) {
         // alert("No Query to display.Create a new Query");
         setLoader(false);
@@ -99,26 +130,35 @@ const Queries = () => {
         setInitialContent(false);
         setAssignedQuery(Get_Assigned_Query.data);
       }
+      // -------------------------
       // console.log(Get_Assigned_Query.data);
       // console.log(AssignedQuery);
     } catch (error) {
       console.log(error);
     }
   }
+  // -------------------------
+  //? UseEffect Hook...
   useEffect(() => {
     Get_Query();
   }, []);
+  // -------------------------
   return (
     <div>
       {" "}
       <div className="container">
+        {/* QUERIES */}
         <div className="component-title">Queries</div>
         <div className="row">
           <div className="col-md-6">
+            {/* ------------------------- */}
             <div className="card query-card-bg">
               <div className="card-body">
+                {/* ------------------------- */}
                 <form onSubmit={My_Formik.handleSubmit}>
                   <h5 className="card-title query-title">Topic :</h5>
+                  {/* ------------------------- */}
+                  {/* TOPIC */}
                   <div className="form-group">
                     <select
                       className="form-control"
@@ -151,6 +191,8 @@ const Queries = () => {
                       </span>
                     }
                   </div>
+                  {/* ------------------------- */}
+                  {/* LANGUAGE */}
                   <h5 className="card-title query-title">Language :</h5>
                   <div className="form-group">
                     <select
@@ -176,6 +218,8 @@ const Queries = () => {
                       </span>
                     }
                   </div>
+                  {/* ------------------------- */}
+                  {/* QUERY TITLE */}
                   <h5 className="card-title query-title">Queries :</h5>
                   <div className="form-group">
                     <input
@@ -199,6 +243,8 @@ const Queries = () => {
                       </span>
                     }
                   </div>
+                  {/* ------------------------- */}
+                  {/* QUERY DESCRIPTION */}
                   <div className="form-group mt-2">
                     <textarea
                       className="form-control"
@@ -221,9 +267,12 @@ const Queries = () => {
                       </span>
                     }
                   </div>
+                  {/* ------------------------- */}
+                  {/* AVAILABLE TIME FROM*/}
                   <h5 className="card-title query-title">Available Time :</h5>
                   <div className="form-group">
                     <div className="row">
+                      {/* ------------------------- */}
                       <div className="col">
                         <input
                           type="time"
@@ -246,6 +295,8 @@ const Queries = () => {
                           </span>
                         }
                       </div>
+                      {/* ------------------------- */}
+                      {/* AVAILABLE TIME TO*/}
                       <div className="col">
                         <input
                           type="time"
@@ -268,8 +319,11 @@ const Queries = () => {
                           </span>
                         }
                       </div>
+                      {/* ------------------------- */}
                     </div>
                   </div>
+                  {/* ------------------------- */}
+                  {/* CREATE BUTTON */}
                   <div className="col-md-12 d-flex justify-content-center mt-2">
                     <button
                       type="submit"
@@ -285,26 +339,28 @@ const Queries = () => {
                       )}
                     </button>
                   </div>
+                  {/* ------------------------- */}
                 </form>
+                {/* ------------------------- */}
               </div>
             </div>
           </div>
 
           {Loader ? (
             <div className="loader-div col-md-6">
-              <div class="loader">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-                <div class="bar4"></div>
-                <div class="bar5"></div>
-                <div class="bar6"></div>
-                <div class="bar7"></div>
-                <div class="bar8"></div>
-                <div class="bar9"></div>
-                <div class="bar10"></div>
-                <div class="bar11"></div>
-                <div class="bar12"></div>
+              <div className="loader">
+                <div className="bar1"></div>
+                <div className="bar2"></div>
+                <div className="bar3"></div>
+                <div className="bar4"></div>
+                <div className="bar5"></div>
+                <div className="bar6"></div>
+                <div className="bar7"></div>
+                <div className="bar8"></div>
+                <div className="bar9"></div>
+                <div className="bar10"></div>
+                <div className="bar11"></div>
+                <div className="bar12"></div>
               </div>
             </div>
           ) : (
@@ -321,9 +377,12 @@ const Queries = () => {
                 </div>
               ) : (
                 <div className="col-md-6">
+                  {/* ------------------------- */}
                   {AssignedQuery.map((Query) => {
                     return (
-                      <div className="card mb-2" key={Query._id}>
+                      <div className="card mb-2 mt-1" key={Query._id}>
+                        {/* QUERIES ASSIGNED CARD */}
+                        {/* ------------------------- */}
                         <div className="card-header">
                           <p className="card-text query-title">
                             Topic :
@@ -333,8 +392,10 @@ const Queries = () => {
                             </span>
                           </p>
                         </div>
+                        {/* ------------------------- */}
                         <div className="card-body">
                           <div className="row">
+                            {/* ------------------------- */}
                             <div className="col-md-6">
                               <div className="card-text query-title">
                                 Created at :
@@ -344,6 +405,7 @@ const Queries = () => {
                                 </span>
                               </div>
                             </div>
+                            {/* ------------------------- */}
                             <div className="col-md-6">
                               <div className="card-text query-title">
                                 Assigned to :
@@ -353,7 +415,9 @@ const Queries = () => {
                                 </span>
                               </div>
                             </div>
+                            {/* ------------------------- */}
                           </div>
+                          {/* ------------------------- */}
                           <div className="row mt-1">
                             <div className="col-md-12">
                               <div className="card-title query-title">
@@ -371,6 +435,7 @@ const Queries = () => {
                               </div>
                             </div>
                           </div>
+                          {/* ------------------------- */}
                         </div>
                       </div>
                     );

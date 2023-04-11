@@ -1,19 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alkatra&display=swap");
 
-.home-title{
-    color: blueviolet;
-    font-size: 30px;
-    text-shadow: 1px 1px 2px #030303bb;
+.home-title {
+  color: blueviolet;
+  font-size: 30px;
+  text-shadow: 1px 1px 2px #030303bb;
 }
-.home-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    text-align: start;
-
+.home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: start;
 }
-.home-content-text{
-    font-size: 20px;
-    font-weight: 500;
-    font-family: 'Alkatra', cursive;
+.home-content-text {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Alkatra", cursive;
 }

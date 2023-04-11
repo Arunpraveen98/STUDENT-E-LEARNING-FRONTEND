@@ -11,6 +11,7 @@ import EastIcon from "@mui/icons-material/East";
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Class = () => {
   // --------------------------------------
@@ -24,13 +25,29 @@ const Class = () => {
   const [github_Url, setGithub_Url] = useState("");
   const [Deploy_Url, setDeploy_Url] = useState("");
   const [Spinner, setSpinner] = useState(true);
+  // --------------------------------------
+  //? React-router-dom Hook...
   const navigate = useNavigate();
+  // --------------------------------------
+  //? Student Object...
   const Student = window.localStorage.getItem("Student_Data");
   const Student_Data = JSON.parse(Student);
   // --------------------------------------
-
+  //? React toastify for Success...
+  const success = (message) => {
+    toast.success(`${message}`, {
+      position: "top-center",
+      autoClose: true,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 1,
+      theme: "dark",
+    });
+  };
   // --------------------------------------
-  //? Function to fetch the class contents Data...
+  //? Async Function to fetch the class contents Data...
   async function Get_Class_Contents() {
     try {
       const Class_Contents = await axios.get(
@@ -43,13 +60,16 @@ const Class = () => {
         }
       );
       // console.log(Class_Contents.data.message);
-
+      // --------------------------------------
       setClassContents(Class_Contents.data);
       setLoader(false);
+      // --------------------------------------
     } catch (error) {
       console.log(error);
-      alert(error);
+      // --------------------------------------
+      // alert(error);
       navigate("/");
+      // --------------------------------------
     }
   }
   // --------------------------------------
@@ -75,9 +95,12 @@ const Class = () => {
     }
   };
   // --------------------------------------
-
-  const Post_Task_Activites = async (Task_Name, Task_Topic) => {
+  //? Posting the Tasks Activites...
+  const Post_Task_Activites = async (Task_Name, Task_Topic, Day) => {
+    // --------------------------------------
     try {
+      // --------------------------------------
+      //? Inbuilt Date function...
       const currentDate = new Date();
       const ISTDateString = currentDate.toLocaleString("en-IN", {
         timeZone: "Asia/Kolkata",
@@ -88,7 +111,9 @@ const Class = () => {
         minute: "2-digit",
         second: "2-digit",
       });
+      // --------------------------------------
       setSpinner(false);
+      // --------------------------------------
       const Post_Task = await axios.post(
         `${process.env.REACT_APP_EXPRESS_SERVER}/Task-Submission`,
         // "http://localhost:8000/Task-Submission",
@@ -100,6 +125,7 @@ const Class = () => {
           Deployed_Url: Deploy_Url,
           Student_Email: Student_Data.Student_Email,
           Task_Completed: "true",
+          Day: Day,
         },
         {
           headers: {
@@ -108,10 +134,13 @@ const Class = () => {
         }
       );
       // console.log(Post_Task);
-      alert("Task Submitted");
+      // alert("Task Submitted");
+      // --------------------------------------
+      success("👍Task Submitted");
       setGithub_Url("");
       setDeploy_Url("");
       setSpinner(true);
+      // --------------------------------------
     } catch (error) {
       console.log(error);
     }
@@ -165,19 +194,19 @@ const Class = () => {
           {/* --------------------- */}
           {Loader ? (
             <div className="loader-div">
-              <div class="loader">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-                <div class="bar4"></div>
-                <div class="bar5"></div>
-                <div class="bar6"></div>
-                <div class="bar7"></div>
-                <div class="bar8"></div>
-                <div class="bar9"></div>
-                <div class="bar10"></div>
-                <div class="bar11"></div>
-                <div class="bar12"></div>
+              <div className="loader">
+                <div className="bar1"></div>
+                <div className="bar2"></div>
+                <div className="bar3"></div>
+                <div className="bar4"></div>
+                <div className="bar5"></div>
+                <div className="bar6"></div>
+                <div className="bar7"></div>
+                <div className="bar8"></div>
+                <div className="bar9"></div>
+                <div className="bar10"></div>
+                <div className="bar11"></div>
+                <div className="bar12"></div>
               </div>
             </div>
           ) : (
@@ -186,6 +215,7 @@ const Class = () => {
                 <div className="row">
                   <div className="col-md-12 mt-4">
                     <div className="card">
+                      {/* --------------------- */}
                       <div className="card-header">
                         <h5 className="card-title">
                           No session title available. Click the Day to view the
@@ -195,28 +225,30 @@ const Class = () => {
                           Class schedule is not updated
                         </p>
                       </div>
+                      {/* --------------------- */}
                       <div className="card-body">
                         <h3 className="card-title">Contents:</h3>
                         <p className="card-text">No content available</p>
-
                         <div>
                           <h3 className="card-title">Pre-read:</h3>
                           <p className="card-text">No preread available</p>
                         </div>
-
-                        <div></div>
                       </div>
+                      {/* --------------------- */}
                     </div>
                   </div>
                 </div>
               ) : (
                 <>
+                  {/* CLASS CONTENTS */}
                   {Daily_Content.map((item) => {
                     return (
                       <>
                         <div className="row" key={item._id}>
                           <div className="col-md-12 mt-4">
+                            {/* --------------------- */}
                             <div className="card">
+                              {/* --------------------- */}
                               <div className="card-header p-3">
                                 <h5 className="card-title">{item.Day_Title}</h5>
                                 <p className="card-text content-date">
@@ -226,6 +258,7 @@ const Class = () => {
                               <div className="card-body">
                                 <div>
                                   <h3 className="card-title">Contents:</h3>
+                                  {/* --------------------- */}
                                   <div>
                                     <p className="card-text">
                                       <EastIcon /> {item.Contents[0]}
@@ -251,7 +284,7 @@ const Class = () => {
                                       <EastIcon /> {item.Contents[5]}
                                     </p>
                                   </div>
-
+                                  {/* --------------------- */}
                                   <div>
                                     <h3 className="card-title mt-1">
                                       Pre-read:
@@ -260,9 +293,11 @@ const Class = () => {
                                       {item.Pre_read_url}
                                     </p>
                                   </div>
+                                  {/* --------------------- */}
                                 </div>
                               </div>
                             </div>
+                            {/* --------------------- */}
                           </div>
 
                           {/* TASK ACTIVITIES   */}
@@ -300,6 +335,7 @@ const Class = () => {
                                   <div className="row">
                                     <div className="col-md-12">
                                       <form>
+                                        {/* --------------------- */}
                                         <div className="form-group mt-3">
                                           <label htmlFor="githubUrl">
                                             GitHub URL:
@@ -315,6 +351,7 @@ const Class = () => {
                                             placeholder="ex : https://www.example.com"
                                           />
                                         </div>
+                                        {/* --------------------- */}
                                         <div className="form-group mt-3">
                                           <label htmlFor="deploymentUrl">
                                             Deployment URL:
@@ -330,9 +367,11 @@ const Class = () => {
                                             placeholder="ex : https://www.example.com"
                                           />
                                         </div>
+                                        {/* --------------------- */}
                                       </form>
-
+                                      {/* --------------------- */}
                                       <div className="mt-2 d-flex justify-content-center">
+                                        {/* --------------------- */}
                                         <button
                                           type="submit"
                                           value="SUBMIT"
@@ -344,7 +383,8 @@ const Class = () => {
                                             ) {
                                               Post_Task_Activites(
                                                 item.Day_Title,
-                                                item.Task_Activity_Topic
+                                                item.Task_Activity_Topic,
+                                                item.Day
                                               );
                                             }
                                           }}
@@ -361,6 +401,7 @@ const Class = () => {
                                             </div>
                                           )}
                                         </button>
+                                        {/* --------------------- */}
                                       </div>
                                     </div>
                                   </div>
@@ -385,11 +426,13 @@ const Class = () => {
         <div className="col-md-5 roadmap-div">
           <div className="card">
             <div className="card-body">
+              {/* --------------------- */}
               <div className="card-header">
                 <h5 className="card-title">Session Roadmap</h5>
               </div>
-
+              {/* --------------------- */}
               <div className="d-flex flex-wrap m-2 ">
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(0)}
@@ -399,7 +442,7 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
-
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(1)}
@@ -409,6 +452,7 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(2)}
@@ -418,6 +462,7 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(3)}
@@ -427,13 +472,14 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(4)}
                 >
                   Day-5
                 </Button>
-
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(5)}
@@ -443,6 +489,7 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(6)}
@@ -452,6 +499,7 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(7)}
@@ -461,6 +509,7 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
+                {/* --------------------- */}
                 <Button
                   className="session-button"
                   onClick={() => set_daily_content(8)}
@@ -470,12 +519,14 @@ const Class = () => {
                 <div className="session-arrow-btn">
                   <EastIcon />
                 </div>
+                {/* --------------------- */}
                 <Button
                   className="session-button day-10-btn"
                   onClick={() => set_daily_content(9)}
                 >
                   Day-10
                 </Button>
+                {/* --------------------- */}
               </div>
             </div>
           </div>
@@ -489,15 +540,19 @@ const Class = () => {
 
       {/* Popup Modal */}
       <Modal show={showModal} onHide={handleCloseModal}>
+        {/* --------------------- */}
         <Modal.Header closeButton>
           <Modal.Title>Join Zoom Meeting</Modal.Title>
         </Modal.Header>
+        {/* --------------------- */}
         {Daily_Content.map((zoom) => {
           return (
             <>
+              {/* --------------------- */}
               <Modal.Body className="zoom-link" key={zoom.id}>
                 <a href={zoom.Zoom_Link}>{zoom.Zoom_Link}</a>
               </Modal.Body>
+              {/* --------------------- */}
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseModal}>
                   Close
@@ -508,6 +563,7 @@ const Class = () => {
                   </a>
                 </Button>
               </Modal.Footer>
+              {/* --------------------- */}
             </>
           );
         })}

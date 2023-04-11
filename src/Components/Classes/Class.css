@@ -25,34 +25,42 @@
   font-family: "Marcellus", serif;
   letter-spacing: 1px;
 }
-.zoom-link{
+
+.zoom-link {
   font-size: 12.5px;
   width: 100%;
 }
-.join-btn-link{
+
+.join-btn-link {
   text-decoration: none;
   color: white;
 }
-.join-btn-link:hover{
-  
+
+.join-btn-link:hover {
   color: white;
 }
+
 .join-class {
   padding-top: 5px;
   padding-left: 5px;
 }
+
 .join-btn:hover {
-background-color: rgb(15, 152, 15) !important;
+  background-color: rgb(15, 152, 15) !important;
 }
+
 .content-date {
   font-weight: bold;
 }
+
 .pre-read-content {
   font-weight: bold;
 }
+
 .task-activity-topic {
   font-weight: bold;
 }
+
 .card-text {
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -79,44 +87,28 @@ background-color: rgb(15, 152, 15) !important;
   background-color: #5a6268;
   border-color: #545b62;
 }
-/* .join-btn{
-    <div className="row">
-  <div className="col-md-11">
 
-  </div>
-  <div className="col-md-1">
-
-</div>
-  } */
 .session-arrow-btn {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.day-10-btn{
+
+.day-10-btn {
   padding: 8px;
 }
+
 .session-button {
   margin: 5px;
- 
+
   border-radius: 5px !important;
 }
+
 .session-button:hover {
   background-color: rgba(0, 0, 0, 0.473) !important;
   border-color: white !important;
 }
-/* .session-button:active {
-  color: yellow !important;
-} */
-/* .roadmap-div{
 
-
-} */
 .task-div {
   margin-top: 5px !important;
 }
-/* .arrow-btn{
-
-
-  border: 2px solid black !important;
-} */

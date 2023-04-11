@@ -3,57 +3,71 @@
   padding: 10px;
   font-weight: bold;
 }
+
 .task-topic {
   margin-bottom: 0px;
   font-weight: bold;
   font-family: "Marcellus", serif;
   letter-spacing: 2px;
+  color: rgb(255, 85, 0);
 }
+
 .task-topic-heading {
   font-weight: lighter;
   letter-spacing: 1px;
-  font-family: "Times New Roman", Times, serif;
+  font-family:serif;
   margin-left: 5px;
+  color: black;
 }
+
 .task-date {
   position: absolute;
   right: 10px;
   font-size: 14px;
   font-weight: bold;
 }
+
 .card-url a {
   text-decoration: none;
 }
+
 .card-url {
   font-size: 16px;
 }
+
 .github-url {
   font-weight: bold;
   font-family: monospace;
   margin-right: 5px;
 }
+
 .deploy-url {
   font-weight: bold;
   font-family: monospace;
   margin-right: 5px;
 }
+
 .task-url {
   border: 1px solid orange;
   border-radius: 5px;
   padding: 10px;
 }
+
 .task-answers {
   position: relative;
 }
+
 .task-graded {
   position: absolute;
   right: 10px;
   font-size: 14px;
   font-weight: bold;
 }
+
 .warning {
   color: black;
 }
+
 .task-warning {
   color: orangered;
   padding: 5px;
@@ -64,14 +78,17 @@
   padding: 5px;
   margin-top: 5px;
 }
+
 .view-btn {
   background-color: #4396f5;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 .close-btn {
   background-color: rgb(244, 66, 46);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 .task-btn {
   border: none;
   padding: 4px 8px;

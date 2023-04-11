@@ -1,6 +1,7 @@
 .course {
   color: aliceblue;
 }
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -10,33 +11,28 @@
 .course-button-div {
   display: flex;
   justify-content: center;
-  /* border: 2px solid rgb(55, 255, 0); */
 }
-/* .view-course-button {
-  position: absolute ;
-  bottom: 5px ;
-} */
+
 .course-title {
   color: aqua;
   padding: 5px;
   display: flex;
   justify-content: center;
-  /* box-shadow:   rgb(15, 67, 126) 0px 1px 3px 0px,  rgb(15, 67, 126) 0px 0px 0px 1px; */
   border-top: 0.5px solid rgb(15, 67, 126);
   border-bottom: 0.5px solid rgb(15, 67, 126);
   margin-top: 3px;
 }
+
 .course-description {
   font-size: 14px;
   color: rgb(255, 255, 255);
   text-align: justify;
   padding: 5px;
 }
+
 .course-content-card {
   width: 263px;
   height: 400px;
-  /* background:transparent !important; */
-  /* border: 2px solid rgb(255, 255, 255); */
   border-radius: 10px;
   padding: 5px;
   position: relative;
@@ -48,22 +44,16 @@
   border: 0.5px solid rgb(15, 67, 126);
   margin: 10px;
 }
+
 .course-content-card:hover {
-  /* Set the new background color for the card when hovered */
   border: 0.5px solid #f0f0f0;
 }
+
 .course-card-img {
   width: 250px !important;
   height: 180px !important;
   border-radius: 5px;
 }
-/* .card {
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    padding: 5px;
-    border-radius: 10px;
-  }
-   */
 
 .view-course-button {
   padding: 5px;
@@ -109,7 +99,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border:2px solid yellow; */
   margin-top: 40px;
   padding: 20px;
 }

@@ -4,22 +4,44 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
+// ----------------------
 const User_Login = () => {
+  // ----------------------
+  //? React Hooks...
   const [Spinner, setSpinner] = useState(true);
+  // ----------------------
+  //? React-router-dom Hook...
   const navigate = useNavigate();
-
-  const success = (message) =>
+  // ----------------------
+  //? React toastify for Success...
+  const success = (message) => {
     toast.success(`${message}`, {
       position: "top-center",
-      autoClose: false,
+      autoClose: true,
       hideProgressBar: false,
-      closeOnClick: true,
+      closeOnClick: false,
       pauseOnHover: true,
       draggable: true,
       progress: 1,
       theme: "dark",
     });
-
+  };
+  // ----------------------
+  //? React toastify for Error...
+  const error = (message) => {
+    toast.error(`${message}`, {
+      position: "top-center",
+      autoClose: true,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 1,
+      theme: "dark",
+    });
+  };
+  // ----------------------
+  //? Formik for Form Validations...
   const My_Formik = useFormik({
     initialValues: {
       Email: "",
@@ -27,9 +49,8 @@ const User_Login = () => {
     },
     validate: (values) => {
       let errors = {};
-      // -----------------------------------------------------
-
-      // EMAIL ...
+      // ---------------------------------------
+      //? EMAIL ...
       if (!values.Email) {
         errors.Email = "Please enter your email";
       } else if (
@@ -37,48 +58,59 @@ const User_Login = () => {
       ) {
         errors.Email = "Invalid email address";
       }
-      // -----------------------------------------------------
-      // PASSWORD ...
+      // ----------------------------------------
+      //? PASSWORD ...
       if (!values.Password) {
         errors.Password = "Please enter your Password";
       }
-
-      // -----------------------------------------------------
+      // ---------------------------------------
       return errors;
     },
     onSubmit: async (values) => {
       try {
+        // ----------------------
         setSpinner(false);
+        // ----------------------
         const Student_Login = await axios.post(
           `${process.env.REACT_APP_EXPRESS_SERVER}/Student-Login`,
           // `http://localhost:8000/Student-Login`,
-
           values
         );
+        // ----------------------
         if (Student_Login.data.token) {
+          // ----------------------
           const Student = {
             Student_Token: Student_Login.data.token,
             Student_Email: Student_Login.data.Student_Email,
             Student_Name: Student_Login.data.Student_Name,
           };
+          // ----------------------
           const Student_Data = JSON.stringify(Student);
           window.localStorage.setItem("Student_Data", Student_Data);
+          // ----------------------
           // alert(Student_Login.data.message);
-          success(Student_Login.data.message);
-          // console.log(Student_Login.data);
           setSpinner(true);
+          success("👍Successfully Login");
+          // console.log(Student_Login.data);
           navigate("/class");
+          // ----------------------
         } else {
-          alert(Student_Login.data.message);
+          // alert(Student_Login.data.message);
+          My_Formik.resetForm();
+          setSpinner(true);
+          error("❗Invalid Email / Password");
         }
-      } catch (error) {
-        console.log(error);
-        alert(error.response.data.message);
+        // ----------------------
+      } catch (errors) {
+        console.log(errors);
+        // alert(errors.response.data.message);
+        error("❗Please Register and Login.");
         My_Formik.resetForm();
         navigate("/Student-Registration");
       }
     },
   });
+   // ----------------------
   return (
     <div className="login-bg">
       <div className="container">
@@ -145,7 +177,7 @@ const User_Login = () => {
                     Forgot Password ?
                   </a>
                 </div>
-
+                {/* -------------------------------- */}
                 <button type={"submit"} value={"Login"} className="sign">
                   {Spinner ? (
                     "Login"
@@ -155,7 +187,6 @@ const User_Login = () => {
                     </div>
                   )}
                 </button>
-
                 {/* -------------------------------- */}
               </form>
               {/* -------------------------------- */}
@@ -164,12 +195,13 @@ const User_Login = () => {
                 <p className="message">Don't have an account?</p>
                 <div className="line"></div>
               </div>
-
+              {/* -------------------------------- */}
               <p className="signup">
                 <Link to={"/Student-Registration"} className="">
                   Sign up
                 </Link>
               </p>
+              {/* -------------------------------- */}
             </div>
           </div>
         </div>

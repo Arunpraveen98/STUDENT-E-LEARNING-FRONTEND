@@ -1,66 +1,69 @@
-.queries{
-    color: white;
+.queries {
+  color: white;
 }
-.query-card-bg{
-    background-color:whitesmoke;
+
+.query-card-bg {
+  background-color: whitesmoke;
 }
-.query-title{
-    font-size: 16px;
-    margin-top: 8px;
-    color:#1271d6;
-    font-weight: bold;
-    font-family: 'Marcellus', serif;
+
+.query-title {
+  font-size: 16px;
+  margin-top: 8px;
+  color: #1271d6;
+  font-weight: bold;
+  font-family: "Marcellus", serif;
 }
-.query-content{
-    color: black;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
+
+.query-content {
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
 }
-.assigned-query-title{
-    color:#1271d6;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    font-family: 'Marcellus', serif;
+
+.assigned-query-title {
+  color: #1271d6;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: "Marcellus", serif;
 }
 
 .create-btn {
-    border: none;
-    padding: 4px 8px;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    width: 80px;
-    margin-right: 5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transform: skew(-21deg);
-  }
-  
-  .create-btn-content {
-    display: inline-block;
-    transform: skew(21deg);
-  }
-  
-  .create-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 100%;
-    left: 0;
-    background: rgb(20, 20, 20);
-    opacity: 0;
-    z-index: -1;
-    transition: all 0.5s;
-  }
-  
-  .create-btn:hover {
-    color: #fff;
-  }
-  
-  .create-btn:hover::before {
-    left: 0;
-    right: 0;
-    opacity: 1;
-  }
-  
+  border: none;
+  padding: 4px 8px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  width: 80px;
+  margin-right: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg);
+}
+
+.create-btn-content {
+  display: inline-block;
+  transform: skew(21deg);
+}
+
+.create-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  background: rgb(20, 20, 20);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.create-btn:hover {
+  color: #fff;
+}
+
+.create-btn:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}

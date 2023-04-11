@@ -1,56 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
-body{
-    color: black !important;
-   
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
+body {
+  color: black !important;
 }
-.light-mode{
-    color: white !important;
+.light-mode {
+  color: white !important;
 }
-.container{
-  width: 100%;
+.container {
+  width: 100vw;
   height: 100vh;
   overflow: auto;
 }
+/* ------------------------ */
+/* SPINNER */
+.spinner-div {
+  display: flex;
+  justify-content: center;
+}
+.spinner {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  border: 2.5px solid #0000;
+  border-radius: 50%;
+  border-color: #dbdcef #0000;
+  animation: spinner-e04l1k 1s infinite linear;
+}
 
-  /* SPINNER */
-  .spinner-div{
-    display: flex;
-    justify-content: center;
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2.2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.spinner::before {
+  border-color: #474bff #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+
+.spinner::after {
+  margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+  100% {
+    transform: rotate(1turn);
   }
-  .spinner {
-   
-    width: 26px;
-    height: 26px;
-    display: grid;
-    border: 2.5px solid #0000;
-    border-radius: 50%;
-    border-color: #dbdcef #0000;
-    animation: spinner-e04l1k 1s infinite linear;
-  }
-  
-  .spinner::before,
-  .spinner::after {
-    content: "";
-    grid-area: 1/1;
-    margin: 2.2px;
-    border: inherit;
-    border-radius: 50%;
-  }
-  
-  .spinner::before {
-    border-color: #474bff #0000;
-    animation: inherit;
-    animation-duration: 0.5s;
-    animation-direction: reverse;
-  }
-  
-  .spinner::after {
-    margin: 8.9px;
-  }
-  
-  @keyframes spinner-e04l1k {
-    100% {
-      transform: rotate(1turn);
-    }
-  }
+}
+/* ------------------------ */

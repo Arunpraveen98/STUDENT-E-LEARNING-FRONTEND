@@ -4,24 +4,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 40px; */
   padding-top: 110px;
-  /* border: 2px solid yellow; */
 }
-.zen-class-name{
+
+.zen-class-name {
   color: whitesmoke;
   font-family: "Marcellus", serif;
   font-size: 20px;
   letter-spacing: 2px;
   text-shadow: 2px 2px 4px #030303;
-  /* position: relative;
-  left: 0px; */
-   /* border: 2px solid rgb(229, 55, 35); */
   display: flex;
-
   justify-content: center;
   align-items: center;
 }
+
 .login-bg {
   background-image: url("../../Assets/login-page-bg.jpg");
   background-position: center;
@@ -30,6 +26,7 @@
   height: 100%;
   width: 100vw;
 }
+
 .Login-form-container {
   width: 320px;
   border-radius: 0.75rem;

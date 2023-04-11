@@ -13,14 +13,17 @@ import Student_Queries from "./Pages/Student_Queries";
 import Home_Page from "./Pages/Home_Page";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+// -------------------
 function App() {
+  // -------------------
   const [theme, colorMode] = useMode();
+  // -------------------
   return (
     <>
-     <ToastContainer
+      {/* --------------------- */}
+      <ToastContainer
         position="top-center"
-        autoClose={false}
+        autoClose={true}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -30,24 +33,27 @@ function App() {
         pauseOnHover
         theme="dark"
       />
-     <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Routes>
-          <Route path="/" element={<User_Login />} />
-          <Route path="/Student-Registration" element={<User_Register />} />
-
-          <Route path="/HomePage" element={<Home_Page />} />
-          <Route path="/class" element={<StudentClass />} />
-          <Route path="/Task-Submission" element={<StudentTask />} />
-          <Route path="/Tasks-Overview" element={<StudentDash />} />
-          <Route path="/Free-Courses" element={<StudentCourse />} />
-          <Route path="/Queries" element={<Student_Queries />} />
-        </Routes>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+      {/* --------------------- */}
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {/* --------------------- */}
+          {/* ROUTES PATH */}
+          <Routes>
+            <Route path="/" element={<User_Login />} />
+            <Route path="/Student-Registration" element={<User_Register />} />
+            <Route path="/HomePage" element={<Home_Page />} />
+            <Route path="/class" element={<StudentClass />} />
+            <Route path="/Task-Submission" element={<StudentTask />} />
+            <Route path="/Tasks-Overview" element={<StudentDash />} />
+            <Route path="/Free-Courses" element={<StudentCourse />} />
+            <Route path="/Queries" element={<Student_Queries />} />
+          </Routes>
+          {/* --------------------- */}
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+      {/* --------------------- */}
     </>
-   
   );
 }
 

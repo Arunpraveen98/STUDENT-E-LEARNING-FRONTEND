@@ -1,15 +1,48 @@
 import React, { useState } from "react";
-
 import "./User_Register.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-
 import axios from "axios";
+import { toast } from "react-toastify";
+// -----------------------------
 const User_Register = () => {
+  // -----------------------------
+  //? React-router-dom Hook...
   const navigate = useNavigate();
+  // -----------------------------
+  //? React Hooks...
   const [Email_Exists, setEmail_Exists] = useState(false);
   const [Spinner, setSpinner] = useState(true);
-
+  // -----------------------------
+  //? React toastify for Success...
+  const success = (message) => {
+    toast.success(`${message}`, {
+      position: "top-center",
+      autoClose: true,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 1,
+      theme: "dark",
+    });
+  };
+  // -----------------------------
+  //? React toastify for Error...
+  const error = (message) => {
+    toast.error(`${message}`, {
+      position: "top-center",
+      autoClose: true,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 1,
+      theme: "dark",
+    });
+  };
+  // -----------------------------
+  //? Formik for Form Validations...
   const My_Formik = useFormik({
     initialValues: {
       FirstName: "",
@@ -54,42 +87,51 @@ const User_Register = () => {
     },
     onSubmit: async (values) => {
       try {
+        // -----------------------------
         setSpinner(false);
+        // -----------------------------
+        //? POST Student Registered Data
         const Post_Student_Registration = await axios.post(
           `${process.env.REACT_APP_EXPRESS_SERVER}/Student-Registration`,
           // `http://localhost:8000/Student-Registration`,
-          
-
           values
         );
+        // -----------------------------
         if (values.Email === Post_Student_Registration.data.Email) {
           setEmail_Exists(true);
           setSpinner(true);
+          error("❗Email already exists");
           // console.log(Post_Student_Registration.data.Email);
         } else {
-          alert("successfully Registered...");
           setEmail_Exists(false);
+          success("👍successfully Registered");
           My_Formik.resetForm();
           setSpinner(true);
           navigate("/");
         }
+        // -----------------------------
       } catch (error) {
         console.log(error);
       }
     },
   });
+  // -----------------------------
   return (
     <div className="register-page-bg">
       <div className="container register-container">
         <div className="row">
+          {/* ---------------- */}
           <div className="col-md-12 register-form">
+            {/* ---------------- */}
             <form className="form" onSubmit={My_Formik.handleSubmit}>
               <p className="title">Register </p>
               <p className="message">
                 Signup now and get full access to our app.{" "}
               </p>
+              {/* ---------------- */}
               <div className="flex">
                 {/* ---------------- */}
+                {/* FIRST NAME */}
                 <div>
                   <label>
                     <input
@@ -116,6 +158,7 @@ const User_Register = () => {
                   }
                 </div>
                 {/* ---------------- */}
+                {/* LAST NAME */}
                 <div>
                   <label>
                     <input
@@ -143,6 +186,7 @@ const User_Register = () => {
                 </div>
               </div>
               {/* ---------------- */}
+              {/* EMAIL*/}
               <label>
                 <input
                   name="Email"
@@ -169,6 +213,7 @@ const User_Register = () => {
                 </span>
               }
               {/* ---------------- */}
+              {/* PASSWORD */}
               <label>
                 <input
                   name="Password"
@@ -194,6 +239,7 @@ const User_Register = () => {
                 </span>
               }
               {/* ---------------- */}
+              {/* CONFIRM PASSWORD */}
               <label>
                 <input
                   name="ConfirmPassword"
@@ -218,6 +264,7 @@ const User_Register = () => {
                 </span>
               }
               {/* ---------------- */}
+              {/* REGISTER BUTTON */}
               <button className="submit" type="submit" value="SUBMIT">
                 {Spinner ? (
                   "Register"

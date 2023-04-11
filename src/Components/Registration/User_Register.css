@@ -8,12 +8,10 @@
 }
 
 .register-container {
-  /* border:2px solid rgb(0, 255, 4); */
   padding: 20px;
 }
 
 .register-form {
-  /* border:2px solid yellow; */
   display: flex;
   justify-content: center;
   padding-top: 50px;
@@ -24,7 +22,6 @@
   flex-direction: column;
   gap: 10px;
   max-width: 350px;
-
   background-color: #ffffff8e;
   padding: 20px;
   border-radius: 20px;
