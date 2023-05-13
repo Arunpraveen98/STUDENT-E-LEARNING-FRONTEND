@@ -34,8 +34,8 @@ const TaskCompletionBarChart = () => {
   const Get_Submitted_Task = async () => {
     try {
       const Get_Task_Data = await axios.get(
-        `${process.env.REACT_APP_EXPRESS_SERVER}/Submitted-Task?Email=${Student_Data.Student_Email}`,
-        // `http://localhost:8000/Submitted-Task?Email=${Student_Data.Student_Email}`,
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Student/Submitted-Task?Email=${Student_Data.Student_Email}`,
+        // `http://localhost:8000/Student/Submitted-Task?Email=${Student_Data.Student_Email}`,
         {
           headers: {
             Authorization: Student_Data.Student_Token,

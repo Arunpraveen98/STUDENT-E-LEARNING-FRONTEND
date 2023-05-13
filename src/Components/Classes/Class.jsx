@@ -51,8 +51,8 @@ const Class = () => {
   async function Get_Class_Contents() {
     try {
       const Class_Contents = await axios.get(
-        `${process.env.REACT_APP_EXPRESS_SERVER}/Class-Contents`,
-        // "http://localhost:8000/Class-Contents",
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Student/Class-Contents`,
+        // "http://localhost:8000/Student/Class-Contents",
         {
           headers: {
             Authorization: Student_Data.Student_Token,
@@ -115,8 +115,8 @@ const Class = () => {
       setSpinner(false);
       // --------------------------------------
       const Post_Task = await axios.post(
-        `${process.env.REACT_APP_EXPRESS_SERVER}/Task-Submission`,
-        // "http://localhost:8000/Task-Submission",
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Student/Task-Submission`,
+        // "http://localhost:8000/Student/Task-Submission",
         {
           Current_Date: ISTDateString,
           Task_Name: Task_Name,
@@ -550,7 +550,13 @@ const Class = () => {
             <>
               {/* --------------------- */}
               <Modal.Body className="zoom-link" key={zoom.id}>
-                <a href={zoom.Zoom_Link}>{zoom.Zoom_Link}</a>
+                <a
+                  href={zoom.Zoom_Link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {zoom.Zoom_Link}
+                </a>
               </Modal.Body>
               {/* --------------------- */}
               <Modal.Footer>
@@ -558,7 +564,12 @@ const Class = () => {
                   Close
                 </Button>
                 <Button variant="primary">
-                  <a className="join-btn-link" href={zoom.Zoom_Link}>
+                  <a
+                    className="join-btn-link"
+                    href={zoom.Zoom_Link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Join
                   </a>
                 </Button>

@@ -30,8 +30,8 @@ const Free_Courses = () => {
     try {
       //   ------------------------
       const Free_Course_Content = await axios.get(
-        `${process.env.REACT_APP_EXPRESS_SERVER}/Free-Courses`,
-        // `http://localhost:8000/Free-Courses`,
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Student/Free-Courses`,
+        // `http://localhost:8000/Student/Free-Courses`,
         {
           headers: {
             Authorization: Student_Data.Student_Token,

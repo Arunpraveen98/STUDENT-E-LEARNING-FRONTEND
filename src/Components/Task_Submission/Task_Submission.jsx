@@ -24,8 +24,8 @@ const Task_Submission = () => {
     try {
       //  -----------------------------
       const Get_Task_Data = await axios.get(
-        `${process.env.REACT_APP_EXPRESS_SERVER}/Submitted-Task?Email=${Student_Data.Student_Email}`,
-        // `http://localhost:8000/Submitted-Task?Email=${Student_Data.Student_Email}`,
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Student/Submitted-Task?Email=${Student_Data.Student_Email}`,
+        // `http://localhost:8000/Student/Submitted-Task?Email=${Student_Data.Student_Email}`,
         {
           headers: {
             Authorization: Student_Data.Student_Token,
@@ -188,13 +188,23 @@ const Task_Submission = () => {
                           <div className="task-url">
                             <div className="card-url">
                               <span className="github-url">GITHUB-URL:</span>
-                              <a href={task.GitHub_Url}>{task.GitHub_Url}</a>
+                              <a
+                                href={task.GitHub_Url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {task.GitHub_Url}
+                              </a>
                             </div>
                             {/* --------------------- */}
                             {/* DEPLOYMENT URL */}
                             <div className="card-url">
                               <span className="deploy-url">DEPLOY-URL:</span>
-                              <a href={task.Deployed_Url}>
+                              <a
+                                href={task.Deployed_Url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
                                 {task.Deployed_Url}
                               </a>
                             </div>

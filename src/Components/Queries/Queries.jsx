@@ -80,8 +80,8 @@ const Queries = () => {
         // -------------------------
         //? POST Queries...
         const Post_Query = await axios.post(
-          `${process.env.REACT_APP_EXPRESS_SERVER}/Create-Query`,
-          // `http://localhost:8000/Create-Query`,
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Student/Create-Query`,
+          // `http://localhost:8000/Student/Create-Query`,
           {
             ...values,
             Current_Date: ISTDateString,
@@ -112,8 +112,8 @@ const Queries = () => {
     try {
       // -------------------------
       const Get_Assigned_Query = await axios.get(
-        `${process.env.REACT_APP_EXPRESS_SERVER}/Assigned-Query?Email=${Student_Data.Student_Email}`,
-        // `http://localhost:8000/Assigned-Query?Email=${Student_Data.Student_Email}`,
+        `${process.env.REACT_APP_EXPRESS_SERVER}/Student/Assigned-Query?Email=${Student_Data.Student_Email}`,
+        // `http://localhost:8000/Student/Assigned-Query?Email=${Student_Data.Student_Email}`,
 
         {
           headers: {

@@ -11,7 +11,7 @@ import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { BookOnline } from "@mui/icons-material";
+import { BookOnline, LibraryBooks } from "@mui/icons-material";
 // ----------------------------------------------------------------
 //? Themes to MenuItems...
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -67,7 +67,7 @@ const Sidebar = () => {
       }}
     >
       {/* ------------------------------- */}
-       {/* Prosidebar Package... */}
+      {/* Prosidebar Package... */}
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* ------------------------------- */}
@@ -87,8 +87,12 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h4" color={colors.grey[100]}>
-                  ZEN-CLASS
+                <Typography
+                  variant="h4"
+                  color={colors.grey[100]}
+                  style={{ fontFamily: "monospace" }}
+                >
+                  ZEN-CLASS <LibraryBooks />
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -138,6 +142,7 @@ const Sidebar = () => {
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 25px" }}
+              style={{ fontFamily: "monospace", letterSpacing: "1px" }}
             >
               USER
             </Typography>

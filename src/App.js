@@ -13,6 +13,7 @@ import Student_Queries from "./Pages/Student_Queries";
 import Home_Page from "./Pages/Home_Page";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BackgroundAnimate from "./Background";
 // -------------------
 function App() {
   // -------------------
@@ -39,6 +40,7 @@ function App() {
           <CssBaseline />
           {/* --------------------- */}
           {/* ROUTES PATH */}
+          {/* <BackgroundAnimate /> */}
           <Routes>
             <Route path="/" element={<User_Login />} />
             <Route path="/Student-Registration" element={<User_Register />} />
